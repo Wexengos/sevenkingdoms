@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import styled from 'styled-components';
 
 interface HouseOverlayProps {
@@ -15,10 +16,12 @@ export const MainContainer = styled.div`
     width: 100%;
 `
 
-export const HouseOverlay = styled.img<HouseOverlayProps>`
+export const HouseOverlay = styled.img.attrs({
+    className: "house-overlay",
+}) <HouseOverlayProps>`
     width: 1vw;
     height: auto;
-    cursor: pointer;
+    cursor: pointer !important;
     position: absolute;
     top: ${props => props.top};
     left: ${props => props.left};
@@ -27,4 +30,22 @@ export const HouseOverlay = styled.img<HouseOverlayProps>`
     &:hover {
         opacity: 0.5;
     }
+`
+
+export const RightContainer = styled(Box)`
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem 1.5rem;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    height: 92.25vh;
+    width: 60vw;
+
+    background: #222222;
+    border-radius: 10px;
+    border: 1px solid #FFF;
+    margin-left: 1.5rem;
 `

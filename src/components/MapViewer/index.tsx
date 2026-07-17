@@ -19,21 +19,21 @@ import Targaryen from "../../assets/targaryen.svg";
 import Greyjoy from "../../assets/greyjoy.svg";
 import Tully from "../../assets/tully.svg";
 
-import { HouseOverlay, MainContainer } from "./styles";
+import { HouseOverlay, MainContainer, RightContainer } from "./styles";
 
 export default function MapViewer() {
     const [showOverlays, setShowOverlays] = useState(true);
     return (
         <MainContainer>
-            <Box>
+            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
                 <Box
                     sx={{
-                        height: "908px",
-                        width: "600px",
+                        height: "96.25vh",
+                        width: "calc(90vh * 583 / 880)",
                         border: "10px ridge sandybrown",
                         overflow: "hidden",
                         backgroundColor: "#c6ecff",
-                        cursor: "crosshair"
+                        cursor: "crosshair",
                     }}
                 >
                     <TransformWrapper
@@ -118,25 +118,34 @@ export default function MapViewer() {
                                             left="45%"
                                             scale={state.scale}
                                         />
-                                        
                                     </>
                                 )}
+
                             </TransformComponent>
                         )}
                     </TransformWrapper>
                 </Box >
-                <p><a href="https://awoiaf.westeros.org/index.php/File:Locator_map_Westeros_in_Known_world.svg">Base map SVG</a> created by Abjiklam.</p>
             </Box>
-            <Box>
-                <span style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                    <Switch
-                        defaultChecked
-                        color="primary"
-                        onChange={() => setShowOverlays(!showOverlays)}
-                    />
-                    <p>Show/Hide House Sigils</p>
-                </span>
-            </Box>
+
+            <RightContainer>
+                <Box>
+
+                    <span style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px", width: "100%" }}>
+                        <Switch
+                            defaultChecked
+                            color="primary"
+                            onChange={() => setShowOverlays(!showOverlays)}
+                        />
+                        <p>Show/Hide House Sigils</p>
+                    </span>
+                </Box>
+
+                <p>
+                    <b>⋅&nbsp;</b><a href="https://awoiaf.westeros.org/index.php/File:Locator_map_Westeros_in_Known_world.svg">Base map SVG</a>
+                    &nbsp;created by Abjiklam,
+                    taken from A Wiki of Ice and Fire, and recolored by me.
+                </p>
+            </RightContainer>
         </MainContainer>
     );
 }
